@@ -9,8 +9,9 @@ public class Runner : MonoBehaviour
   Rigidbody2D rigidBody;
 
   bool canJump = false;
+  float score = 0;
   float jumpForce = 1200;
-  public float speed = 1f;
+  float speed = 1f;
 
   void Start()
   {
@@ -19,8 +20,18 @@ public class Runner : MonoBehaviour
 
   void FixedUpdate()
   {
+    Run();
+    HandleJump();
+  }
+
+  void Run()
+  {
     transform.Translate(speed * Time.deltaTime, 0, 0);
-    if (Input.GetKeyDown("space") && canJump)
+  }
+
+  void HandleJump()
+  {
+    if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
     {
       rigidBody.AddForce(new Vector2(0, jumpForce));
       canJump = false;
@@ -49,6 +60,10 @@ public class Runner : MonoBehaviour
     {
       SpawnDoubleChallenge();
     }
+    if (other.tag == "Goal")
+    {
+      score++;
+    }
   }
 
   void OnTriggerExit2D(Collider2D other)
@@ -61,6 +76,7 @@ public class Runner : MonoBehaviour
 
   void SpawnDoubleChallenge()
   {
-    Instantiate(doubleChallenge, new Vector2(transform.position.x + 45f, doubleChallenge.transform.position.y), Quaternion.identity);
+    Vector2 newPosition = new Vector2(transform.position.x + 45f, doubleChallenge.transform.position.y);
+    Instantiate(doubleChallenge, newPosition, Quaternion.identity);
   }
 }

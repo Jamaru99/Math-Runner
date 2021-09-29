@@ -9,6 +9,7 @@ TagManager:
   - Victory
   - GroundSpeed
   - Spawner
+  - Goal
   layers:
   - Default
   - TransparentFX
