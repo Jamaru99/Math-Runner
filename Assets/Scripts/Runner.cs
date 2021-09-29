@@ -6,8 +6,7 @@ public class Runner : MonoBehaviour
 {
   public GameObject doubleChallenge;
 
-  Rigidbody2D rigidbody;
-  GameObject spawn;
+  Rigidbody2D rigidBody;
 
   bool canJump = false;
   float jumpForce = 1200;
@@ -15,8 +14,7 @@ public class Runner : MonoBehaviour
 
   void Start()
   {
-    rigidbody = GetComponent<Rigidbody2D>();
-    spawn = GameObject.Find("Spawn");
+    rigidBody = GetComponent<Rigidbody2D>();
   }
 
   void FixedUpdate()
@@ -24,7 +22,7 @@ public class Runner : MonoBehaviour
     transform.Translate(speed * Time.deltaTime, 0, 0);
     if (Input.GetKeyDown("space") && canJump)
     {
-      rigidbody.AddForce(new Vector2(0, jumpForce));
+      rigidBody.AddForce(new Vector2(0, jumpForce));
       canJump = false;
     }
   }
@@ -37,11 +35,7 @@ public class Runner : MonoBehaviour
     }
     if (other.gameObject.tag == "Death")
     {
-      transform.position = spawn.transform.position;
-    }
-    if (other.gameObject.tag == "GroundSpeed")
-    {
-      speed += 5;
+      GameManager.ReloadLevel();
     }
   }
 
@@ -50,6 +44,9 @@ public class Runner : MonoBehaviour
     if (other.tag == "GroundSpeed")
     {
       speed += 5;
+    }
+    if (other.tag == "Spawner")
+    {
       SpawnDoubleChallenge();
     }
   }
@@ -64,6 +61,6 @@ public class Runner : MonoBehaviour
 
   void SpawnDoubleChallenge()
   {
-    Instantiate(doubleChallenge, new Vector2(transform.position.x + 10f, -2.5f), Quaternion.identity);
+    Instantiate(doubleChallenge, new Vector2(transform.position.x + 45f, doubleChallenge.transform.position.y), Quaternion.identity);
   }
 }
