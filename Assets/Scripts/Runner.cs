@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
-  public GameObject doubleChallenge;
+  public GameObject doubleChallengePrefab;
 
   Rigidbody2D rigidBody;
 
   bool canJump = false;
   float score = 0;
   float jumpForce = 1200;
-  float speed = 1f;
+  float speed = 4f;
 
   void Start()
   {
@@ -63,6 +63,7 @@ public class Runner : MonoBehaviour
     if (other.tag == "Goal")
     {
       score++;
+      UIManager.Instance.UpdateScoreUI(score);
     }
   }
 
@@ -76,7 +77,7 @@ public class Runner : MonoBehaviour
 
   void SpawnDoubleChallenge()
   {
-    Vector2 newPosition = new Vector2(transform.position.x + 45f, doubleChallenge.transform.position.y);
-    Instantiate(doubleChallenge, newPosition, Quaternion.identity);
+    Vector2 newPosition = new Vector2(transform.position.x + 45f, doubleChallengePrefab.transform.position.y);
+    Instantiate(doubleChallengePrefab, newPosition, Quaternion.identity);
   }
 }

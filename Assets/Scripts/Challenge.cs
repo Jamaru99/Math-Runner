@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour
 {
-  public Operation operation;
-
   protected string GenerateEasyExpression(bool isTrue)
   {
     int n1 = Random.Range(0, 6);
     int n2 = Random.Range(0, 6);
 
     int result;
+    Operation operation = GetRandomOperation(3);
 
     switch (operation)
     {
@@ -29,6 +28,24 @@ public class Challenge : MonoBehaviour
         return n1 + " / " + n2 + " = " + result;
       default:
         return "";
+    }
+  }
+
+  Operation GetRandomOperation(int limit)
+  {
+    int randomNumber = Random.Range(0, limit);
+    switch (randomNumber)
+    {
+      case 0:
+        return Operation.SUM;
+      case 1:
+        return Operation.SUBTRACTION;
+      case 2:
+        return Operation.MULTIPLICATION;
+      case 3:
+        return Operation.DIVISION;
+      default:
+        return new Operation();
     }
   }
 }
