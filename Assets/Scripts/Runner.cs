@@ -7,15 +7,20 @@ public class Runner : MonoBehaviour
   public GameObject doubleChallengePrefab;
 
   Rigidbody2D rigidBody;
+  Animator animator;
 
   bool canJump = false;
+  bool canRun = false;
   int score = 0;
   float jumpForce = 1200;
   float speed = 4f;
+  float startDelay = 1.8f;
 
   void Start()
   {
     rigidBody = GetComponent<Rigidbody2D>();
+    animator = GetComponent<Animator>();
+    Invoke("StartRunning", startDelay);
   }
 
   void FixedUpdate()
@@ -24,9 +29,18 @@ public class Runner : MonoBehaviour
     HandleJump();
   }
 
+  void StartRunning()
+  {
+    canRun = true;
+    animator.Play("Player-Run");
+  }
+
   void Run()
   {
-    transform.Translate(speed * Time.deltaTime, 0, 0);
+    if (canRun)
+    {
+      transform.Translate(speed * Time.deltaTime, 0, 0);
+    }
   }
 
   void HandleJump()
