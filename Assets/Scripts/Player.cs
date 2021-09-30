@@ -81,6 +81,11 @@ public class Player : MonoBehaviour
       score++;
       UIManager.Instance.UpdateScoreUI(score);
     }
+    if (other.tag == "Destroyer")
+    {
+      GameObject destroyableChallenge = other.transform.parent.gameObject;
+      Destroy(destroyableChallenge);
+    }
   }
 
   void OnTriggerExit2D(Collider2D other)

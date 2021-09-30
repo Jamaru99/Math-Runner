@@ -10,6 +10,7 @@ TagManager:
   - GroundSpeed
   - Spawner
   - Goal
+  - Destroyer
   layers:
   - Default
   - TransparentFX
