@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
   {
     if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
     {
+      animator.Play("Player-Jump");
       rigidBody.AddForce(new Vector2(0, jumpForce));
       canJump = false;
     }
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
     if (other.gameObject.tag == "Ground")
     {
       canJump = true;
+      animator.Play("Player-Run");
     }
     if (other.gameObject.tag == "Death")
     {
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
     if (other.tag == "GroundSpeed")
     {
       speed = 9f;
+      animator.Play("Player-Run");
     }
     if (other.tag == "Spawner")
     {
