@@ -33,23 +33,23 @@ public class TripleChallenge : Challenge
     switch (randomNumber)
     {
       case 0:
-        expressionTop.text = GenerateEasyExpression(true);
-        expressionMid.text = GenerateEasyExpression(false);
-        expressionBottom.text = GenerateEasyExpression(false);
+        expressionTop.text = GenerateExpression(true);
+        expressionMid.text = GenerateExpression(false);
+        expressionBottom.text = GenerateExpression(false);
         fence1.localPosition = new Vector2(fence1.localPosition.x, fenceMid);
         fence2.localPosition = new Vector2(fence2.localPosition.x, fenceBottom);
         break;
       case 1:
-        expressionTop.text = GenerateEasyExpression(false);
-        expressionMid.text = GenerateEasyExpression(true);
-        expressionBottom.text = GenerateEasyExpression(false);
+        expressionTop.text = GenerateExpression(false);
+        expressionMid.text = GenerateExpression(true);
+        expressionBottom.text = GenerateExpression(false);
         fence1.localPosition = new Vector2(fence1.localPosition.x, fenceTop);
         fence2.localPosition = new Vector2(fence2.localPosition.x, fenceBottom);
         break;
       case 2:
-        expressionTop.text = GenerateEasyExpression(false);
-        expressionMid.text = GenerateEasyExpression(false);
-        expressionBottom.text = GenerateEasyExpression(true);
+        expressionTop.text = GenerateExpression(false);
+        expressionMid.text = GenerateExpression(false);
+        expressionBottom.text = GenerateExpression(true);
         fence1.localPosition = new Vector2(fence1.localPosition.x, fenceTop);
         fence2.localPosition = new Vector2(fence2.localPosition.x, fenceMid);
         break;

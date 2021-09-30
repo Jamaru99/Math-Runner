@@ -6,6 +6,8 @@ public class Challenge : MonoBehaviour
 {
   protected string GenerateExpression(bool isTrue)
   {
+
+
     if (GameManager.mode == Mode.EASY)
     {
       return GenerateEasyExpression(isTrue);
@@ -21,14 +23,25 @@ public class Challenge : MonoBehaviour
     return "";
   }
 
-  protected string GenerateEasyExpression(bool isTrue)
+  protected string GenerateEasyExpression(bool isTrue, int maxNumber)
   {
-    int maxNumber = Player.score / 2 + 6;
-    int n1 = Random.Range(0, maxNumber);
-    int n2 = Random.Range(0, maxNumber);
+    int n1, n2, result;
 
-    int result;
-    Operation operation = GetRandomOperation(3);
+    int maxNumber = Player.score / 2 + 6;
+    int limit = Player.score >= 15 ? 3 : 2;
+
+    Operation operation = GetRandomOperation(limit);
+
+    if (operation == Operation.MULTIPLICATION)
+    {
+      n1 = Random.Range(0, 10);
+      n2 = Random.Range(1, 10);
+    }
+    else
+    {
+      n1 = Random.Range(0, maxNumber);
+      n2 = Random.Range(0, maxNumber);
+    }
 
     switch (operation)
     {
@@ -41,9 +54,6 @@ public class Challenge : MonoBehaviour
       case Operation.SUBTRACTION:
         result = isTrue ? n1 - n2 : n1 - n2 + Random.Range(1, maxNumber);
         return n1 + " - " + n2 + " = " + result;
-      case Operation.DIVISION:
-        result = isTrue ? n1 / n2 : n1 / n2 + Random.Range(1, maxNumber);
-        return n1 + " / " + n2 + " = " + result;
       default:
         return "";
     }
@@ -51,11 +61,45 @@ public class Challenge : MonoBehaviour
 
   protected string GenerateMediumExpression(bool isTrue)
   {
-    return "";
+    int n1, n2, result;
+
+    int maxNumber = Player.score / 2 + 10;
+    int limit = 3;
+
+    Operation operation = GetRandomOperation(limit);
+
+    if (operation == Operation.MULTIPLICATION)
+    {
+      n1 = Random.Range(1, 10);
+      n2 = Random.Range(2, 12);
+    }
+    else
+    {
+      n1 = Random.Range(0, maxNumber);
+      n2 = Random.Range(0, maxNumber);
+    }
+
+    switch (operation)
+    {
+      case Operation.SUM:
+        result = isTrue ? n1 + n2 : n1 + n2 + Random.Range(1, maxNumber);
+        return n1 + " + " + n2 + " = " + result;
+      case Operation.MULTIPLICATION:
+        result = isTrue ? n1 * n2 : n1 * n2 + Random.Range(1, maxNumber);
+        return n1 + " x " + n2 + " = " + result;
+      case Operation.SUBTRACTION:
+        result = isTrue ? n1 - n2 : n1 - n2 + Random.Range(1, maxNumber);
+        return n1 + " - " + n2 + " = " + result;
+      default:
+        return "";
+    }
   }
 
   protected string GenerateHardExpression(bool isTrue)
-  {
+  {/*
+    case Operation.DIVISION:
+        result = isTrue ? n1 / n2 : n1 / n2 + Random.Range(1, maxNumber);
+        return n1 + " / " + n2 + " = " + result;*/
     return "";
   }
 

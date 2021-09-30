@@ -26,14 +26,14 @@ public class DoubleChallenge : Challenge
     int randomNumber = Random.Range(0, 2);
     if (randomNumber == 0)
     {
-      expression1.text = GenerateEasyExpression(true);
-      expression2.text = GenerateEasyExpression(false);
+      expression1.text = GenerateExpression(true);
+      expression2.text = GenerateExpression(false);
       SetFencePosition(fenceBottomPosition);
     }
     else
     {
-      expression1.text = GenerateEasyExpression(false);
-      expression2.text = GenerateEasyExpression(true);
+      expression1.text = GenerateExpression(false);
+      expression2.text = GenerateExpression(true);
       SetFencePosition(fenceTopPosition);
     }
   }
