@@ -63,20 +63,20 @@ public class Challenge : MonoBehaviour
   {
     int n1, n2, result;
 
-    int maxNumber = Player.score / 2 + 10;
+    int maxNumber = Player.score + 10;
     int limit = 3;
 
     Operation operation = GetRandomOperation(limit);
 
     if (operation == Operation.MULTIPLICATION)
     {
-      n1 = Random.Range(1, 10);
-      n2 = Random.Range(2, 12);
+      n1 = Random.Range(4, 10);
+      n2 = Random.Range(3, 12);
     }
     else
     {
-      n1 = Random.Range(Player.score / 2, maxNumber);
-      n2 = Random.Range(Player.score / 2, maxNumber);
+      n1 = Random.Range(Player.score, maxNumber);
+      n2 = Random.Range(Player.score, maxNumber);
     }
 
     switch (operation)
@@ -119,6 +119,13 @@ public class Challenge : MonoBehaviour
       default:
         return new Operation();
     }
+  }
+
+  public static bool ShouldSpawnTripleChallenge(int score)
+  {
+    return score > 0
+      && (GameManager.mode == Mode.MEDIUM && score % 8 == 0
+      || GameManager.mode == Mode.HARD && score % 3 == 0);
   }
 }
 

@@ -93,23 +93,14 @@ public class Player : MonoBehaviour
 
   void SpawnChallenge()
   {
-    if (score > 20 && GameManager.mode == Mode.MEDIUM)
+    if (Challenge.ShouldSpawnTripleChallenge(score))
     {
-      if (score % 4 == 0)
-      {
-        SpawnTripleChallenge();
-        return;
-      }
+      SpawnTripleChallenge();
     }
-    if (score > 5 && GameManager.mode == Mode.HARD)
+    else
     {
-      if (score % 3 == 0)
-      {
-        SpawnTripleChallenge();
-        return;
-      }
+      SpawnDoubleChallenge();
     }
-    SpawnDoubleChallenge();
   }
 
   void SpawnDoubleChallenge()
