@@ -39,8 +39,8 @@ public class Challenge : MonoBehaviour
     }
     else
     {
-      n1 = Random.Range(0, maxNumber);
-      n2 = Random.Range(0, maxNumber);
+      n1 = Random.Range(Player.score / 3, maxNumber);
+      n2 = Random.Range(Player.score / 3, maxNumber);
     }
 
     switch (operation)
@@ -75,8 +75,8 @@ public class Challenge : MonoBehaviour
     }
     else
     {
-      n1 = Random.Range(0, maxNumber);
-      n2 = Random.Range(0, maxNumber);
+      n1 = Random.Range(Player.score / 2, maxNumber);
+      n2 = Random.Range(Player.score / 2, maxNumber);
     }
 
     switch (operation)

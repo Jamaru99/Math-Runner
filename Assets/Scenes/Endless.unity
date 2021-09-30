@@ -292,12 +292,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4058934729218302520, guid: b3f07b20d32c74cccb42aa5151633ee3,
         type: 3}
-    - target: {fileID: 4580259485177678060, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
-        type: 3}
-      propertyPath: doubleChallengePrefab
-      value: 
-      objectReference: {fileID: 4058934729218302520, guid: b3f07b20d32c74cccb42aa5151633ee3,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
 --- !u!1 &894442250

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public GameObject doubleChallengePrefab;
+  public GameObject tripleChallengePrefab;
 
   public static int score = 0;
 
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
     }
     if (other.tag == "Spawner")
     {
-      SpawnDoubleChallenge();
+      SpawnChallenge();
     }
     if (other.tag == "Goal")
     {
@@ -90,9 +91,37 @@ public class Player : MonoBehaviour
     }
   }
 
+  void SpawnChallenge()
+  {
+    if (score > 20 && GameManager.mode == Mode.MEDIUM)
+    {
+      if (score % 4 == 0)
+      {
+        SpawnTripleChallenge();
+        return;
+      }
+    }
+    if (score > 5 && GameManager.mode == Mode.HARD)
+    {
+      if (score % 3 == 0)
+      {
+        SpawnTripleChallenge();
+        return;
+      }
+    }
+    SpawnDoubleChallenge();
+  }
+
   void SpawnDoubleChallenge()
   {
     Vector2 newPosition = new Vector2(transform.position.x + 44.9f, doubleChallengePrefab.transform.position.y);
     Instantiate(doubleChallengePrefab, newPosition, Quaternion.identity);
   }
+
+  void SpawnTripleChallenge()
+  {
+    Vector2 newPosition = new Vector2(transform.position.x + 44.9f, tripleChallengePrefab.transform.position.y);
+    Instantiate(tripleChallengePrefab, newPosition, Quaternion.identity);
+  }
+
 }
