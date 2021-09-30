@@ -23,7 +23,7 @@ public class Challenge : MonoBehaviour
     return "";
   }
 
-  protected string GenerateEasyExpression(bool isTrue, int maxNumber)
+  protected string GenerateEasyExpression(bool isTrue)
   {
     int n1, n2, result;
 

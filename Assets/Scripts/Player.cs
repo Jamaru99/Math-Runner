@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
   bool canRun = false;
   float jumpForce = 1200;
   float speed = 4f;
-  float startDelay = 1.8f;
+  float startDelay = 1.7f;
 
   void Start()
   {
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
   void SpawnDoubleChallenge()
   {
-    Vector2 newPosition = new Vector2(transform.position.x + 45f, doubleChallengePrefab.transform.position.y);
+    Vector2 newPosition = new Vector2(transform.position.x + 44.9f, doubleChallengePrefab.transform.position.y);
     Instantiate(doubleChallengePrefab, newPosition, Quaternion.identity);
   }
 }
