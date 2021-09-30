@@ -9,7 +9,7 @@ public class Runner : MonoBehaviour
   Rigidbody2D rigidBody;
 
   bool canJump = false;
-  float score = 0;
+  int score = 0;
   float jumpForce = 1200;
   float speed = 4f;
 

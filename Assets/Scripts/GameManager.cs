@@ -9,4 +9,9 @@ public class GameManager : MonoBehaviour
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
+
+  public static void LoadEndlessGame()
+  {
+    SceneManager.LoadScene(1);
+  }
 }

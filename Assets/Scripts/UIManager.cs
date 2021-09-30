@@ -22,4 +22,9 @@ public class UIManager : MonoBehaviour
   {
     scoreText.text = score.ToString();
   }
+
+  public void ButtonPlayClick()
+  {
+    GameManager.LoadEndlessGame();
+  }
 }
