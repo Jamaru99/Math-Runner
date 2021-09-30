@@ -6,8 +6,6 @@ public class Challenge : MonoBehaviour
 {
   protected string GenerateExpression(bool isTrue)
   {
-
-
     if (GameManager.mode == Mode.EASY)
     {
       return GenerateEasyExpression(isTrue);
@@ -70,8 +68,8 @@ public class Challenge : MonoBehaviour
 
     if (operation == Operation.MULTIPLICATION)
     {
-      n1 = Random.Range(4, 10);
-      n2 = Random.Range(3, 12);
+      n1 = Random.Range(5, 12);
+      n2 = Random.Range(4, 10);
     }
     else
     {
@@ -96,11 +94,38 @@ public class Challenge : MonoBehaviour
   }
 
   protected string GenerateHardExpression(bool isTrue)
-  {/*
-    case Operation.DIVISION:
-        result = isTrue ? n1 / n2 : n1 / n2 + Random.Range(1, maxNumber);
-        return n1 + " / " + n2 + " = " + result;*/
-    return "";
+  {
+    int maxNumber = Player.score + 10;
+    int limit = 4;
+
+    Operation operation = GetRandomOperation(limit);
+
+    switch (operation)
+    {
+      case Operation.SUM:
+        float nSum1 = float.Parse(Random.Range(1.0f, 5.0f).ToString("N1"));
+        float nSum2 = float.Parse(Random.Range(2.0f, 5.0f).ToString("N1"));
+        float resultSum = isTrue ? nSum1 + nSum2 : nSum1 + nSum2 + Random.Range(1, maxNumber);
+        return nSum1 + " + " + nSum2 + " = " + resultSum;
+      case Operation.MULTIPLICATION:
+        int nMult1 = Random.Range(Player.score, maxNumber);
+        int nMult2 = Random.Range(Player.score, maxNumber);
+        int resultMult = isTrue ? nMult1 * nMult2 : nMult1 * nMult2 + Random.Range(1, maxNumber);
+        return nMult1 + " x " + nMult2 + " = " + resultMult;
+      case Operation.SUBTRACTION:
+        int nSub1 = Random.Range(Player.score, maxNumber);
+        int nSub2 = Random.Range(Player.score, maxNumber);
+        int resultSub = isTrue ? nSub1 - nSub2 : nSub1 - nSub2 + Random.Range(1, maxNumber);
+        return nSub1 + " - " + nSub2 + " = " + resultSub;
+      case Operation.DIVISION:
+        int resultDiv = Random.Range(Player.score, maxNumber);
+        int divider = Random.Range(2, 6);
+        int dividend = resultDiv * divider;
+        resultDiv = isTrue ? resultDiv : resultDiv + Random.Range(1, maxNumber);
+        return dividend + " / " + divider + " = " + resultDiv;
+      default:
+        return "";
+    }
   }
 
   Operation GetRandomOperation(int limit)
