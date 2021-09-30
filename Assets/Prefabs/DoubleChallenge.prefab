@@ -584,8 +584,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058934729738627554}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.49333, y: -1, z: 6.1462064}
-  m_LocalScale: {x: 2.0924683, y: 2.0414324, z: 2.0414324}
+  m_LocalPosition: {x: -0.029, y: -1, z: 6.1462064}
+  m_LocalScale: {x: 2.14478, y: 2.0414324, z: 2.0414324}
   m_Children: []
   m_Father: {fileID: 4058934729218302519}
   m_RootOrder: 2
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 4058934730350734208}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -747,8 +747,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058934730350734209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4733324, y: 0.54, z: 4.1506953}
-  m_LocalScale: {x: 14.694844, y: 0.47378212, z: 1}
+  m_LocalPosition: {x: -7.3592, y: 0.54, z: 4.1506953}
+  m_LocalScale: {x: 14.922613, y: 0.47378212, z: 1}
   m_Children: []
   m_Father: {fileID: 4058934729218302519}
   m_RootOrder: 3

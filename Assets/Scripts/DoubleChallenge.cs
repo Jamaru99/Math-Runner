@@ -9,8 +9,8 @@ public class DoubleChallenge : Challenge
   TextMeshPro expression2;
   Transform fence;
 
-  int fenceTop = 2;
-  int fenceBottom = -1;
+  int fenceTopPosition = 2;
+  int fenceBottomPosition = -1;
 
   void Start()
   {
@@ -28,13 +28,13 @@ public class DoubleChallenge : Challenge
     {
       expression1.text = GenerateEasyExpression(true);
       expression2.text = GenerateEasyExpression(false);
-      SetFencePosition(fenceBottom);
+      SetFencePosition(fenceBottomPosition);
     }
     else
     {
       expression1.text = GenerateEasyExpression(false);
       expression2.text = GenerateEasyExpression(true);
-      SetFencePosition(fenceTop);
+      SetFencePosition(fenceTopPosition);
     }
   }
 
