@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+  public static Mode mode;
+
   public static void ReloadLevel()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -14,4 +16,11 @@ public class GameManager : MonoBehaviour
   {
     SceneManager.LoadScene(1);
   }
+}
+
+public enum Mode
+{
+  EASY,
+  MEDIUM,
+  HARD
 }

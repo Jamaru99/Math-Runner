@@ -23,8 +23,21 @@ public class UIManager : MonoBehaviour
     scoreText.text = score.ToString();
   }
 
-  public void ButtonPlayClick()
+  public void PlayEasy()
   {
+    GameManager.mode = Mode.EASY;
+    GameManager.LoadEndlessGame();
+  }
+
+  public void PlayMedium()
+  {
+    GameManager.mode = Mode.MEDIUM;
+    GameManager.LoadEndlessGame();
+  }
+
+  public void PlayHard()
+  {
+    GameManager.mode = Mode.HARD;
     GameManager.LoadEndlessGame();
   }
 }

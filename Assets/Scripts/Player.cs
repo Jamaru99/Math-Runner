@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Runner : MonoBehaviour
+public class Player : MonoBehaviour
 {
   public GameObject doubleChallengePrefab;
+
+  public static int score = 0;
 
   Rigidbody2D rigidBody;
   Animator animator;
 
   bool canJump = false;
   bool canRun = false;
-  int score = 0;
   float jumpForce = 1200;
   float speed = 4f;
   float startDelay = 1.8f;
