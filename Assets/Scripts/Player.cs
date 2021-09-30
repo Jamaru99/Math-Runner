@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
   void FixedUpdate()
   {
     Run();
-    HandleJump();
+    Jump();
   }
 
   void StartRunning()
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  void HandleJump()
+  void Jump()
   {
     if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
     {
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
   {
     if (other.tag == "GroundSpeed")
     {
-      speed += 5;
+      speed = 9f;
     }
     if (other.tag == "Spawner")
     {
@@ -86,13 +86,18 @@ public class Player : MonoBehaviour
       GameObject destroyableChallenge = other.transform.parent.gameObject;
       Destroy(destroyableChallenge);
     }
+    if (other.tag == "Snail")
+    {
+      speed = 1.5f;
+      Destroy(other.gameObject);
+    }
   }
 
   void OnTriggerExit2D(Collider2D other)
   {
     if (other.tag == "GroundSpeed")
     {
-      speed -= 5;
+      speed = 4f;
     }
   }
 
