@@ -70,10 +70,16 @@ public class Player : MonoBehaviour
     }
     if (other.gameObject.tag == "Death")
     {
-      PlayDeath();
-      UIManager.Instance.ShowGameOver();
-      speed = 0;
+      Die();
     }
+  }
+
+  void Die()
+  {
+    PlayDeath();
+    animator.Play("Player-Death");
+    UIManager.Instance.ShowGameOver();
+    speed = 0;
   }
 
   void OnTriggerEnter2D(Collider2D other)
