@@ -37,7 +37,7 @@ public class Challenge : MonoBehaviour
 
     if (operation == Operation.MULTIPLICATION)
     {
-      n1 = Random.Range(0, 10);
+      n1 = Random.Range(0, 5);
       n2 = Random.Range(1, 10);
     }
     else
@@ -127,7 +127,7 @@ public class Challenge : MonoBehaviour
         int divider = Random.Range(2, 6);
         int dividend = resultDiv * divider;
         resultDiv = isTrue ? resultDiv : resultDiv + Random.Range(1, maxNumber);
-        return dividend + " / " + divider + " = " + resultDiv;
+        return dividend + " ÷ " + divider + " = " + resultDiv;
       default:
         return "";
     }

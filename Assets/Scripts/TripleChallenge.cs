@@ -9,20 +9,20 @@ public class TripleChallenge : Challenge
   TextMeshPro expressionMid;
   TextMeshPro expressionBottom;
 
-  Transform fence1;
-  Transform fence2;
+  Transform spike1;
+  Transform spike2;
 
-  int fenceTop = 5;
-  int fenceMid = 2;
-  int fenceBottom = -1;
+  float spikeTopPosition = 4.75f;
+  float spikeMidPosition = 1.9f;
+  float spikeBottomPosition = -0.94f;
 
   void Start()
   {
     expressionTop = transform.GetChild(0).GetComponent<TextMeshPro>();
     expressionMid = transform.GetChild(1).GetComponent<TextMeshPro>();
     expressionBottom = transform.GetChild(2).GetComponent<TextMeshPro>();
-    fence1 = transform.GetChild(3);
-    fence2 = transform.GetChild(4);
+    spike1 = transform.GetChild(3);
+    spike2 = transform.GetChild(4);
 
     PopulateExpressions();
   }
@@ -36,22 +36,22 @@ public class TripleChallenge : Challenge
         expressionTop.text = GenerateExpression(true);
         expressionMid.text = GenerateExpression(false);
         expressionBottom.text = GenerateExpression(false);
-        fence1.localPosition = new Vector2(fence1.localPosition.x, fenceMid);
-        fence2.localPosition = new Vector2(fence2.localPosition.x, fenceBottom);
+        spike1.localPosition = new Vector2(spike1.localPosition.x, spikeMidPosition);
+        spike2.localPosition = new Vector2(spike2.localPosition.x, spikeBottomPosition);
         break;
       case 1:
         expressionTop.text = GenerateExpression(false);
         expressionMid.text = GenerateExpression(true);
         expressionBottom.text = GenerateExpression(false);
-        fence1.localPosition = new Vector2(fence1.localPosition.x, fenceTop);
-        fence2.localPosition = new Vector2(fence2.localPosition.x, fenceBottom);
+        spike1.localPosition = new Vector2(spike1.localPosition.x, spikeTopPosition);
+        spike2.localPosition = new Vector2(spike2.localPosition.x, spikeBottomPosition);
         break;
       case 2:
         expressionTop.text = GenerateExpression(false);
         expressionMid.text = GenerateExpression(false);
         expressionBottom.text = GenerateExpression(true);
-        fence1.localPosition = new Vector2(fence1.localPosition.x, fenceTop);
-        fence2.localPosition = new Vector2(fence2.localPosition.x, fenceMid);
+        spike1.localPosition = new Vector2(spike1.localPosition.x, spikeTopPosition);
+        spike2.localPosition = new Vector2(spike2.localPosition.x, spikeMidPosition);
         break;
     }
   }

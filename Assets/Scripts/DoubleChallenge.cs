@@ -7,16 +7,16 @@ public class DoubleChallenge : Challenge
 {
   TextMeshPro expression1;
   TextMeshPro expression2;
-  Transform fence;
+  Transform spike;
 
-  int fenceTopPosition = 2;
-  int fenceBottomPosition = -1;
+  float spikeTopPosition = 2.01f;
+  float spikeBottomPosition = -0.93f;
 
   void Start()
   {
     expression1 = transform.GetChild(0).GetComponent<TextMeshPro>();
     expression2 = transform.GetChild(1).GetComponent<TextMeshPro>();
-    fence = transform.GetChild(2);
+    spike = transform.GetChild(2);
 
     PopulateExpressions();
   }
@@ -28,19 +28,19 @@ public class DoubleChallenge : Challenge
     {
       expression1.text = GenerateExpression(true);
       expression2.text = GenerateExpression(false);
-      SetFencePosition(fenceBottomPosition);
+      SetFencePosition(spikeBottomPosition);
     }
     else
     {
       expression1.text = GenerateExpression(false);
       expression2.text = GenerateExpression(true);
-      SetFencePosition(fenceTopPosition);
+      SetFencePosition(spikeTopPosition);
     }
   }
 
-  void SetFencePosition(int y)
+  void SetFencePosition(float y)
   {
-    fence.localPosition = new Vector2(fence.localPosition.x, y);
+    spike.localPosition = new Vector2(spike.localPosition.x, y);
   }
 }
 
