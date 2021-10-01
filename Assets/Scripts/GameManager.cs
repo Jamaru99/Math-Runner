@@ -7,14 +7,14 @@ public class GameManager : MonoBehaviour
 {
   public static Mode mode;
 
-  public static void ReloadLevel()
-  {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-  }
-
   public static void LoadEndlessGame()
   {
     SceneManager.LoadScene(1);
+  }
+
+  public static void LoadMenu()
+  {
+    SceneManager.LoadScene(0);
   }
 }
 

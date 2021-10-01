@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
   public static UIManager Instance { get { return instance; } }
 
   public TextMeshProUGUI scoreText;
+  public GameObject gameOverPanel;
 
   void Start()
   {
@@ -21,6 +22,21 @@ public class UIManager : MonoBehaviour
   public void UpdateScoreUI(float score)
   {
     scoreText.text = score.ToString();
+  }
+
+  public void ShowGameOver()
+  {
+    gameOverPanel.SetActive(true);
+  }
+
+  public void Restart()
+  {
+    GameManager.LoadEndlessGame();
+  }
+
+  public void LoadMenu()
+  {
+    GameManager.LoadMenu();
   }
 
   public void PlayEasy()

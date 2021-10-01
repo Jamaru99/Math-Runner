@@ -7,10 +7,14 @@ public class Player : MonoBehaviour
   public GameObject doubleChallengePrefab;
   public GameObject tripleChallengePrefab;
 
+  public AudioClip jump;
+  public AudioClip death;
+
   public static int score = 0;
 
   Rigidbody2D rigidBody;
   Animator animator;
+  AudioSource audioSource;
 
   bool canJump = false;
   bool canRun = false;
@@ -22,6 +26,7 @@ public class Player : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
+    audioSource = GetComponent<AudioSource>();
     Invoke("StartRunning", startDelay);
   }
 
@@ -50,7 +55,7 @@ public class Player : MonoBehaviour
     if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
     {
       animator.Play("Player-Jump");
-      AudioManager.Instance.PlayJump();
+      PlayJump();
       rigidBody.AddForce(new Vector2(0, jumpForce));
       canJump = false;
     }
@@ -65,8 +70,9 @@ public class Player : MonoBehaviour
     }
     if (other.gameObject.tag == "Death")
     {
-      AudioManager.Instance.PlayDeath();
-      GameManager.ReloadLevel();
+      PlayDeath();
+      UIManager.Instance.ShowGameOver();
+      speed = 0;
     }
   }
 
@@ -128,6 +134,18 @@ public class Player : MonoBehaviour
   {
     Vector2 newPosition = new Vector2(transform.position.x + 44.9f, tripleChallengePrefab.transform.position.y);
     Instantiate(tripleChallengePrefab, newPosition, Quaternion.identity);
+  }
+
+  public void PlayJump()
+  {
+    audioSource.clip = jump;
+    audioSource.Play();
+  }
+
+  public void PlayDeath()
+  {
+    audioSource.clip = death;
+    audioSource.Play();
   }
 
 }
