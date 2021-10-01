@@ -6,16 +6,36 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
   static UIManager instance;
-  public static UIManager Instance { get { return instance; } }
+  public static UIManager Instance { get { return instance; } set { instance = value; } }
+
+  public TextMeshProUGUI highscoreEasyText;
+  public TextMeshProUGUI highscoreMediumText;
+  public TextMeshProUGUI highscoreHardText;
 
   public TextMeshProUGUI scoreText;
   public GameObject gameOverPanel;
 
-  void Start()
+  public void SetEasyHighscoreText(int highscore)
   {
-    if (instance == null)
+    if (highscoreEasyText != null)
     {
-      instance = this;
+      highscoreEasyText.text += highscore;
+    }
+  }
+
+  public void SetMediumHighscoreText(int highscore)
+  {
+    if (highscoreMediumText != null)
+    {
+      highscoreMediumText.text += highscore;
+    }
+  }
+
+  public void SetHardHighscoreText(int highscore)
+  {
+    if (highscoreHardText != null)
+    {
+      highscoreHardText.text += highscore;
     }
   }
 

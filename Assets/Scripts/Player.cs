@@ -77,9 +77,10 @@ public class Player : MonoBehaviour
   void Die()
   {
     PlayDeath();
+    speed = 0;
     animator.Play("Player-Death");
     UIManager.Instance.ShowGameOver();
-    speed = 0;
+    GameManager.SetHighscore(score);
   }
 
   void SpawnChallenge()
