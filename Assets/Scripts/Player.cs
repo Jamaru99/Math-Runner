@@ -61,17 +61,17 @@ public class Player : MonoBehaviour
     }
   }
 
-  void OnCollisionEnter2D(Collision2D other)
+  void IncreaseSpeed()
   {
-    if (other.gameObject.tag == "Ground")
-    {
-      canJump = true;
-      animator.Play("Player-Run");
-    }
-    if (other.gameObject.tag == "Death")
-    {
-      Die();
-    }
+    speed = 9f;
+    animator.Play("Player-Run");
+    animator.SetFloat("speed-multiplier", 1.5f);
+  }
+
+  void DecreaseSpeed()
+  {
+    speed = 4f;
+    animator.SetFloat("speed-multiplier", 1f);
   }
 
   void Die()
@@ -80,42 +80,6 @@ public class Player : MonoBehaviour
     animator.Play("Player-Death");
     UIManager.Instance.ShowGameOver();
     speed = 0;
-  }
-
-  void OnTriggerEnter2D(Collider2D other)
-  {
-    if (other.tag == "GroundSpeed")
-    {
-      speed = 9f;
-      animator.Play("Player-Run");
-    }
-    if (other.tag == "Spawner")
-    {
-      SpawnChallenge();
-    }
-    if (other.tag == "Goal")
-    {
-      score++;
-      UIManager.Instance.UpdateScoreUI(score);
-    }
-    if (other.tag == "Destroyer")
-    {
-      GameObject destroyableChallenge = other.transform.parent.gameObject;
-      Destroy(destroyableChallenge);
-    }
-    if (other.tag == "Snail")
-    {
-      speed = 1.5f;
-      Destroy(other.gameObject);
-    }
-  }
-
-  void OnTriggerExit2D(Collider2D other)
-  {
-    if (other.tag == "GroundSpeed")
-    {
-      speed = 4f;
-    }
   }
 
   void SpawnChallenge()
@@ -154,4 +118,51 @@ public class Player : MonoBehaviour
     audioSource.Play();
   }
 
+  void OnCollisionEnter2D(Collision2D other)
+  {
+    if (other.gameObject.tag == "Ground")
+    {
+      canJump = true;
+      animator.Play("Player-Run");
+    }
+    if (other.gameObject.tag == "Death")
+    {
+      Die();
+    }
+  }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.tag == "GroundSpeed")
+    {
+      IncreaseSpeed();
+    }
+    if (other.tag == "Spawner")
+    {
+      SpawnChallenge();
+    }
+    if (other.tag == "Goal")
+    {
+      score++;
+      UIManager.Instance.UpdateScoreUI(score);
+    }
+    if (other.tag == "Destroyer")
+    {
+      GameObject destroyableChallenge = other.transform.parent.gameObject;
+      Destroy(destroyableChallenge);
+    }
+    if (other.tag == "Snail")
+    {
+      speed = 1.5f;
+      Destroy(other.gameObject);
+    }
+  }
+
+  void OnTriggerExit2D(Collider2D other)
+  {
+    if (other.tag == "GroundSpeed")
+    {
+      DecreaseSpeed();
+    }
+  }
 }
