@@ -13,6 +13,18 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
+    SetupLanguageManager();
+    SetupUIManager();
+  }
+
+  void SetupLanguageManager()
+  {
+    LanguageManager.Instance = GetComponent<LanguageManager>();
+    LanguageManager.Instance.TranslateToPortuguese();
+  }
+
+  void SetupUIManager()
+  {
     UIManager.Instance = GetComponent<UIManager>();
     UIManager.Instance.SetEasyHighscoreText(GetHighscore(EasyHighscoreKey));
     UIManager.Instance.SetMediumHighscoreText(GetHighscore(MediumHighscoreKey));
