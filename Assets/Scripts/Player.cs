@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
     {
       animator.Play("Player-Jump");
+      AudioManager.Instance.PlayJump();
       rigidBody.AddForce(new Vector2(0, jumpForce));
       canJump = false;
     }
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
     }
     if (other.gameObject.tag == "Death")
     {
+      AudioManager.Instance.PlayDeath();
       GameManager.ReloadLevel();
     }
   }
