@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour
 {
+  void Awake()
+  {
+    SetLandscape();
+  }
+
   protected string GenerateExpression(bool isTrue)
   {
     if (GameManager.mode == Mode.EASY)
@@ -151,6 +156,26 @@ public class Challenge : MonoBehaviour
     return score > 0
       && (GameManager.mode == Mode.MEDIUM && score % 8 == 0
       || GameManager.mode == Mode.HARD && score % 3 == 0);
+  }
+
+  void SetLandscape()
+  {
+    int randomNumber = Random.Range(0, 3);
+    if (randomNumber == 0)
+    {
+      Destroy(transform.Find("House").gameObject);
+      Destroy(transform.Find("Building").gameObject);
+    }
+    if (randomNumber == 1)
+    {
+      Destroy(transform.Find("Building").gameObject);
+      Destroy(transform.Find("Tree").gameObject);
+    }
+    if (randomNumber == 2)
+    {
+      Destroy(transform.Find("House").gameObject);
+      Destroy(transform.Find("Tree").gameObject);
+    }
   }
 }
 

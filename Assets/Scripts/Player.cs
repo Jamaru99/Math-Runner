@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
     animator.Play("Player-Death");
     UIManager.Instance.ShowGameOver();
     GameManager.SetHighscore(score);
+    canJump = false;
   }
 
   void SpawnChallenge()
@@ -154,7 +155,7 @@ public class Player : MonoBehaviour
     }
     if (other.tag == "Snail")
     {
-      speed = 1.5f;
+      speed = 2f;
       Destroy(other.gameObject);
     }
   }
