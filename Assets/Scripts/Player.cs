@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
     GameManager.SetHighscore(score);
     canJump = false;
     canRun = false;
+    Destroy(gameObject, 1f);
   }
 
   void SpawnChallenge()

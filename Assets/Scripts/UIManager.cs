@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
 
   public void SetToggleMuteInitialSprite()
   {
-    if(musicToggle != null && !GameManager.GetHasMusic())
+    if (musicToggle != null && !GameManager.GetHasMusic())
     {
       musicToggle.sprite = musicOff;
     }
