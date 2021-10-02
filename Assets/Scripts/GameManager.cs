@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
+    GooglePlayGame.Init();
+    GooglePlayGame.Login(false, (result) => {});
     SetupLanguageManager();
     SetupUIManager();
   }
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (score > highscore)
         {
           PlayerPrefs.SetInt(EasyHighscoreKey, score);
+          GooglePlayGame.ReportScore(GooglePlayGame.EasyLeaderboard, score);
         }
         break;
       case Mode.MEDIUM:
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
         if (score > highscore)
         {
           PlayerPrefs.SetInt(MediumHighscoreKey, score);
+          GooglePlayGame.ReportScore(GooglePlayGame.MediumLeaderboard, score);
         }
         break;
       case Mode.HARD:
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
         if (score > highscore)
         {
           PlayerPrefs.SetInt(HardHighscoreKey, score);
+          GooglePlayGame.ReportScore(GooglePlayGame.HardLeaderboard, score);
         }
         break;
     }

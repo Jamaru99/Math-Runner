@@ -120,4 +120,9 @@ public class UIManager : MonoBehaviour
   {
     AdManager.Instance.ShowRewardedAd();
   }
+
+  public void ShowLeaderboardsUI()
+  {
+    GooglePlayGame.ShowLeaderboardsUI();
+  }
 }
