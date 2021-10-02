@@ -125,6 +125,12 @@ public class Player : MonoBehaviour
     audioSource.Play();
   }
 
+  public static void ResetScore()
+  {
+    score = 0;
+    secondChance = true;
+  }
+
   void OnCollisionEnter2D(Collision2D other)
   {
     if (other.gameObject.tag == "Ground" && canRun)

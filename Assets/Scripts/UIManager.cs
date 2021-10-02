@@ -67,13 +67,13 @@ public class UIManager : MonoBehaviour
 
   public void Restart()
   {
-    Player.score = 0;
+    Player.ResetScore();
     GameManager.LoadEndlessGame();
   }
 
   public void LoadMenu()
   {
-    Player.score = 0;
+    Player.ResetScore();
     GameManager.LoadMenu();
   }
 
