@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
   public TextMeshProUGUI scoreText;
   public GameObject gameOverPanel;
+  public GameObject gameOverPanelAds;
 
   public Image musicToggle;
   public Sprite musicOn;
@@ -46,21 +47,33 @@ public class UIManager : MonoBehaviour
 
   public void UpdateScoreUI(float score)
   {
-    scoreText.text = score.ToString();
+    if(scoreText != null)
+    {
+      scoreText.text = score.ToString();
+    }
   }
 
-  public void ShowGameOver()
+  public void ShowGameOver(bool secondChance)
   {
-    gameOverPanel.SetActive(true);
+    if(secondChance)
+    {
+      gameOverPanelAds.SetActive(true);
+    } 
+    else
+    {
+      gameOverPanel.SetActive(true);
+    }
   }
 
   public void Restart()
   {
+    Player.score = 0;
     GameManager.LoadEndlessGame();
   }
 
   public void LoadMenu()
   {
+    Player.score = 0;
     GameManager.LoadMenu();
   }
 
@@ -84,7 +97,7 @@ public class UIManager : MonoBehaviour
 
   public void SetToggleMuteInitialSprite()
   {
-    if(!GameManager.GetHasMusic())
+    if(musicToggle != null && !GameManager.GetHasMusic())
     {
       musicToggle.sprite = musicOff;
     }
@@ -101,5 +114,10 @@ public class UIManager : MonoBehaviour
       musicToggle.sprite = musicOn;
     }
     music.ToggleMute();
+  }
+
+  public void WatchVideo()
+  {
+    AdManager.Instance.ShowRewardedAd();
   }
 }

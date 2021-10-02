@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     UIManager.Instance.SetMediumHighscoreText(GetHighscore(MediumHighscoreKey));
     UIManager.Instance.SetHardHighscoreText(GetHighscore(HardHighscoreKey));
     UIManager.Instance.SetToggleMuteInitialSprite();
+    UIManager.Instance.UpdateScoreUI(Player.score);
   }
 
   int GetHighscore(string key)
