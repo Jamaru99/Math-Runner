@@ -12,9 +12,9 @@ public class AdManager : MonoBehaviour
 
   RewardedAd rewardedAd;
   BannerView bannerView;
-  string bannerId = "ca-app-pub-3940256099942544/6300978111";
-  //ca-app-pub-1541045839364233/2005796445
-  string videoId = "ca-app-pub-3940256099942544/5224354917";
+
+  //string bannerId = "ca-app-pub-3940256099942544/6300978111";
+  string videoId = "ca-app-pub-1541045839364233/2005796445";
 
   void Start()
   {
@@ -58,22 +58,5 @@ public class AdManager : MonoBehaviour
     {
       rewardedAd.Show();
     }
-  }
-
-  void RequestBanner()
-  {
-    bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Bottom);
-    AdRequest request = new AdRequest.Builder().Build();
-    bannerView.LoadAd(request);
-  }
-
-  public void ShowBanner()
-  {
-    bannerView.Show();
-  }
-
-  public void HideBanner()
-  {
-    bannerView.Hide();
   }
 }
