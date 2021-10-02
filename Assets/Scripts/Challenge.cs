@@ -31,7 +31,7 @@ public class Challenge : MonoBehaviour
     int n1, n2, result;
 
     int maxNumber = Player.score / 2 + 6;
-    int limit = Player.score >= 15 ? 3 : 2;
+    int limit = Player.score >= 5 ? 3 : 2;
 
     Operation operation = GetRandomOperation(limit);
 
@@ -42,8 +42,8 @@ public class Challenge : MonoBehaviour
     }
     else
     {
-      n1 = Random.Range(Player.score / 3, maxNumber);
-      n2 = Random.Range(Player.score / 3, maxNumber);
+      n1 = Random.Range(Player.score / 2, maxNumber);
+      n2 = Random.Range(Player.score / 2, maxNumber);
     }
 
     switch (operation)
@@ -113,8 +113,8 @@ public class Challenge : MonoBehaviour
         float resultSum = isTrue ? nSum1 + nSum2 : nSum1 + nSum2 + Random.Range(1, maxNumber);
         return nSum1 + " + " + nSum2 + " = " + resultSum;
       case Operation.MULTIPLICATION:
-        int nMult1 = Random.Range(Player.score, maxNumber);
-        int nMult2 = Random.Range(Player.score, maxNumber);
+        int nMult1 = Random.Range(6, 15);
+        int nMult2 = Random.Range(6, 15);
         int resultMult = isTrue ? nMult1 * nMult2 : nMult1 * nMult2 + Random.Range(1, maxNumber);
         return nMult1 + " x " + nMult2 + " = " + resultMult;
       case Operation.SUBTRACTION:

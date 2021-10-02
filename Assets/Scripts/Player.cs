@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     rigidBody = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
     audioSource = GetComponent<AudioSource>();
+    score = 0;
     Invoke("StartRunning", startDelay);
   }
 
