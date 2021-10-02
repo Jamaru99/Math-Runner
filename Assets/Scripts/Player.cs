@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
   public AudioClip death;
 
   public static int score = 0;
+  public static bool secondChance = true;
 
   Rigidbody2D rigidBody;
   Animator animator;
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour
     PlayDeath();
     speed = 0;
     animator.Play("Player-Death");
-    UIManager.Instance.ShowGameOver();
+    UIManager.Instance.ShowGameOver(secondChance);
     GameManager.SetHighscore(score);
     canJump = false;
     canRun = false;
