@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
   public AudioClip death;
 
   public static int score = 0;
+  public static bool secondChance = true;
 
   Rigidbody2D rigidBody;
   Animator animator;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
     rigidBody = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
     audioSource = GetComponent<AudioSource>();
-    score = 0;
+    
     Invoke("StartRunning", startDelay);
   }
 
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
   void StartRunning()
   {
     canRun = true;
+    canJump = true;
     animator.Play("Player-Run");
   }
 
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
 
   void Jump()
   {
-    if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && canJump)
+    if ((Input.GetKeyDown("space") || Input.touchCount > 0) && canJump)
     {
       animator.Play("Player-Jump");
       PlayJump();
@@ -80,9 +82,10 @@ public class Player : MonoBehaviour
     PlayDeath();
     speed = 0;
     animator.Play("Player-Death");
-    UIManager.Instance.ShowGameOver();
+    UIManager.Instance.ShowGameOver(secondChance);
     GameManager.SetHighscore(score);
     canJump = false;
+    canRun = false;
   }
 
   void SpawnChallenge()
@@ -123,7 +126,7 @@ public class Player : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D other)
   {
-    if (other.gameObject.tag == "Ground")
+    if (other.gameObject.tag == "Ground" && canRun)
     {
       canJump = true;
       animator.Play("Player-Run");
