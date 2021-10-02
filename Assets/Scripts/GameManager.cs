@@ -48,27 +48,27 @@ public class GameManager : MonoBehaviour
     switch (mode)
     {
       case Mode.EASY:
+        GooglePlayGame.ReportScore(GooglePlayGame.EasyLeaderboard, score);
         highscore = PlayerPrefs.GetInt(EasyHighscoreKey, 0);
         if (score > highscore)
         {
           PlayerPrefs.SetInt(EasyHighscoreKey, score);
-          GooglePlayGame.ReportScore(GooglePlayGame.EasyLeaderboard, score);
         }
         break;
       case Mode.MEDIUM:
+        GooglePlayGame.ReportScore(GooglePlayGame.MediumLeaderboard, score);
         highscore = PlayerPrefs.GetInt(MediumHighscoreKey, 0);
         if (score > highscore)
         {
           PlayerPrefs.SetInt(MediumHighscoreKey, score);
-          GooglePlayGame.ReportScore(GooglePlayGame.MediumLeaderboard, score);
         }
         break;
       case Mode.HARD:
+        GooglePlayGame.ReportScore(GooglePlayGame.HardLeaderboard, score);
         highscore = PlayerPrefs.GetInt(HardHighscoreKey, 0);
         if (score > highscore)
         {
           PlayerPrefs.SetInt(HardHighscoreKey, score);
-          GooglePlayGame.ReportScore(GooglePlayGame.HardLeaderboard, score);
         }
         break;
     }

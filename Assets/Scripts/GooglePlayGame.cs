@@ -56,7 +56,6 @@
 
  	public static void ReportAchievementProgress(string achievementID, float progress, Action<bool> onIncrementAchievement)
  	{
-
  		Social.ReportProgress(achievementID, progress, (bool success) => {
 
       if(onIncrementAchievement != null)
