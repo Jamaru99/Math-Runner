@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
   const string MediumHighscoreKey = "MediumHighscore";
   const string HardHighscoreKey = "HardHighscore";
 
+  const string hasMusicKey = "HasMusic";
+
   void Start()
   {
     SetupLanguageManager();
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     UIManager.Instance.SetEasyHighscoreText(GetHighscore(EasyHighscoreKey));
     UIManager.Instance.SetMediumHighscoreText(GetHighscore(MediumHighscoreKey));
     UIManager.Instance.SetHardHighscoreText(GetHighscore(HardHighscoreKey));
+    UIManager.Instance.SetToggleMuteInitialSprite();
   }
 
   int GetHighscore(string key)
@@ -63,6 +66,16 @@ public class GameManager : MonoBehaviour
         }
         break;
     }
+  }
+
+  public static bool GetHasMusic()
+  {
+    return PlayerPrefs.GetInt(hasMusicKey, 1) == 1;
+  }
+
+  public static void SetHasMusic(bool hasMusic)
+  {
+    PlayerPrefs.SetInt(hasMusicKey, hasMusic ? 1 : 0);
   }
 
   public static void LoadEndlessGame()

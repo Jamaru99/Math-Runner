@@ -9,6 +9,7 @@ public class Music : MonoBehaviour
 
   void Start()
   {
+    audioSource = GetComponent<AudioSource>();
     if (hasInstance)
     {
       Destroy(gameObject);
@@ -17,8 +18,14 @@ public class Music : MonoBehaviour
     {
       hasInstance = true;
       DontDestroyOnLoad(gameObject);
+      audioSource.mute = !GameManager.GetHasMusic();
     }
   }
 
+  public void ToggleMute()
+  {
+    audioSource.mute = !audioSource.mute;
+    GameManager.SetHasMusic(!audioSource.mute);
+  }
 
 }

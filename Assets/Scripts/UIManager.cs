@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +15,10 @@ public class UIManager : MonoBehaviour
 
   public TextMeshProUGUI scoreText;
   public GameObject gameOverPanel;
+
+  public Image musicToggle;
+  public Sprite musicOn;
+  public Sprite musicOff;
 
   public void SetEasyHighscoreText(int highscore)
   {
@@ -75,5 +80,26 @@ public class UIManager : MonoBehaviour
   {
     GameManager.mode = Mode.HARD;
     GameManager.LoadEndlessGame();
+  }
+
+  public void SetToggleMuteInitialSprite()
+  {
+    if(!GameManager.GetHasMusic())
+    {
+      musicToggle.sprite = musicOff;
+    }
+  }
+
+  public void ToggleMuteUI()
+  {
+    Music music = GameObject.Find("Music").GetComponent<Music>();
+    if(musicToggle.sprite == musicOn)
+    {
+      musicToggle.sprite = musicOff;
+      
+    } else {
+      musicToggle.sprite = musicOn;
+    }
+    music.ToggleMute();
   }
 }

@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
     }
     if (other.tag == "Snail")
     {
-      speed = 2f;
+      speed = 2.4f;
       Destroy(other.gameObject);
     }
   }

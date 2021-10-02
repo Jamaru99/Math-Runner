@@ -109,9 +109,9 @@ public class Challenge : MonoBehaviour
     {
       case Operation.SUM:
         float nSum1 = float.Parse(Random.Range(1.0f, 5.0f).ToString("N1"));
-        float nSum2 = float.Parse(Random.Range(2.0f, 5.0f).ToString("N1"));
+        float nSum2 = float.Parse(Random.Range(2.0f, 5.5f).ToString("N1"));
         float resultSum = isTrue ? nSum1 + nSum2 : nSum1 + nSum2 + Random.Range(1, maxNumber);
-        return nSum1 + " + " + nSum2 + " = " + resultSum;
+        return nSum1 + " + " + nSum2 + " = " + resultSum.ToString("N1");
       case Operation.MULTIPLICATION:
         int nMult1 = Random.Range(6, 15);
         int nMult2 = Random.Range(6, 15);
@@ -124,7 +124,7 @@ public class Challenge : MonoBehaviour
         return nSub1 + " - " + nSub2 + " = " + resultSub;
       case Operation.DIVISION:
         int resultDiv = Random.Range(Player.score, maxNumber);
-        int divider = Random.Range(2, 6);
+        int divider = Random.Range(2, 7);
         int dividend = resultDiv * divider;
         resultDiv = isTrue ? resultDiv : resultDiv + Random.Range(1, maxNumber);
         return dividend + " ÷ " + divider + " = " + resultDiv;
@@ -154,7 +154,7 @@ public class Challenge : MonoBehaviour
   public static bool ShouldSpawnTripleChallenge(int score)
   {
     return score > 0
-      && (GameManager.mode == Mode.MEDIUM && score % 8 == 0
+      && (GameManager.mode == Mode.MEDIUM && score % 6 == 0
       || GameManager.mode == Mode.HARD && score % 3 == 0);
   }
 
