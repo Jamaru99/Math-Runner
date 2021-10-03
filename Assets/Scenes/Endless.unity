@@ -586,6 +586,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+--- !u!4 &631279798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+    type: 3}
+  m_PrefabInstance: {fileID: 631279797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &860858087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1ee0452ac372faeadae068cfb1aff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 631279798}
   minY: 0
   maxY: 0
 --- !u!114 &1107557967
@@ -1586,6 +1593,9 @@ MonoBehaviour:
   highscoreHardText: {fileID: 0}
   scoreText: {fileID: 894442252}
   gameOverPanel: {fileID: 1164029445}
+  musicToggle: {fileID: 0}
+  musicOn: {fileID: 0}
+  musicOff: {fileID: 0}
 --- !u!114 &1838264940
 MonoBehaviour:
   m_ObjectHideFlags: 0
