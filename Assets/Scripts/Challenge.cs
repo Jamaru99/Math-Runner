@@ -109,12 +109,12 @@ public class Challenge : MonoBehaviour
     {
       case Operation.SUM:
         float nSum1 = float.Parse(Random.Range(1.0f, 5.0f).ToString("N1"));
-        float nSum2 = float.Parse(Random.Range(2.0f, 5.5f).ToString("N1"));
+        float nSum2 = float.Parse(Random.Range(2.0f, maxNumber).ToString("N1"));
         float resultSum = isTrue ? nSum1 + nSum2 : nSum1 + nSum2 + Random.Range(1, maxNumber);
         return nSum1 + " + " + nSum2 + " = " + resultSum.ToString("N1");
       case Operation.MULTIPLICATION:
         int nMult1 = Random.Range(6, 15);
-        int nMult2 = Random.Range(6, 15);
+        int nMult2 = Random.Range(7, 15);
         int resultMult = isTrue ? nMult1 * nMult2 : nMult1 * nMult2 + Random.Range(1, maxNumber);
         return nMult1 + " x " + nMult2 + " = " + resultMult;
       case Operation.SUBTRACTION:
