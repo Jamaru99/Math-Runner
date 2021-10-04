@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     rigidBody = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
     audioSource = GetComponent<AudioSource>();
-    
+
     Invoke("StartRunning", startDelay);
   }
 
@@ -166,7 +166,7 @@ public class Player : MonoBehaviour
     }
     if (other.tag == "Snail")
     {
-      speed = 2.4f;
+      speed = 2.6f;
       Destroy(other.gameObject);
     }
   }
