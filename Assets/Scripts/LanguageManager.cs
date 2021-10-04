@@ -18,6 +18,9 @@ public class LanguageManager : MonoBehaviour
 
   public TextMeshProUGUI gameOverTitle;
   public TextMeshProUGUI gameOverRestart;
+  public TextMeshProUGUI gameOverAdsTitle;
+  public TextMeshProUGUI gameOverAdsWatch;
+  public TextMeshProUGUI gameOverAdsRestart;
 
   public void TranslateToPortuguese()
   {
@@ -58,6 +61,18 @@ public class LanguageManager : MonoBehaviour
       if (gameOverRestart != null)
       {
         gameOverRestart.text = "RECOMEÇAR";
+      }
+      if (gameOverAdsTitle != null)
+      {
+        gameOverAdsTitle.text = "Assista a um vídeo para manter sua pontuação";
+      }
+      if (gameOverAdsWatch != null)
+      {
+        gameOverAdsWatch.text = "ASSISTIR";
+      }
+      if (gameOverAdsRestart != null)
+      {
+        gameOverAdsRestart.text = "RECOMEÇAR";
       }
     }
   }
